@@ -1,3 +1,7 @@
+const email = document.getElementById('email');
+const nome = document.getElementById('nome');
+
+
 const  formulario = document.getElementById('form-cadastro');
 const senha = document.getElementById('senha');
 const confirmarSenha = document.getElementById('confirmar-senha');
@@ -14,6 +18,7 @@ formulario.addEventListener("submit",function(event){
     } else if( senha.value.length > 20){
         mensagem.textContent = "Senha muito longa."
         toggleClass(mensagem, "erro");
+
     } else if(confirmarSenha.value !== senha.value){
         mensagem.textContent = "Senhas diferentes!"
         mensagem.classList.add("erro");
@@ -21,8 +26,11 @@ formulario.addEventListener("submit",function(event){
         
     } else {
         mensagem.textContent = "Cadastro realizado com sucesso!"
-         mensagem.classList.add("sucesso");  
-         mensagem.classList.remove("erro");
+        mensagem.classList.add("sucesso");  
+        mensagem.classList.remove("erro");
+        localStorage.setItem("email", email.value);
+        localStorage.setItem("nome", nome.value);
+        localStorage.setItem("senha", senha.value);
 
     }
         
