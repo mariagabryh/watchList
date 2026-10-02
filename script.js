@@ -13,11 +13,19 @@ formulario.addEventListener("submit",function(event){
         mensagem.textContent = "Senha muito curta."
     } else if( senha.value.length > 20){
         mensagem.textContent = "Senha muito longa."
+        toggleClass(mensagem, "erro");
     } else if(confirmarSenha.value !== senha.value){
         mensagem.textContent = "Senhas diferentes!"
+        mensagem.classList.add("erro");
+        mensagem.classList.remove("sucesso");
+        
     } else {
         mensagem.textContent = "Cadastro realizado com sucesso!"
+         mensagem.classList.add("sucesso");  
+         mensagem.classList.remove("erro");
+
     }
+        
 });
 
 verSenha.addEventListener("click", function(){
@@ -36,8 +44,9 @@ verConfirmarSenha.addEventListener("click",function( ){
 
     }else {
         confirmarSenha.type = "password"
+        verConfirmarSenha.classList.toggle("ativo");
     }
-    verConfirmarSenha.classList.toggle("ativo");
+    
 })
 
 
